@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/Line2D.gd" type="Script" id=2]
-[ext_resource path="res://World/SpawnButton.gd" type="Script" id=4]
+[ext_resource path="res://WaveInformation/WaveInformation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SpawnButton(DEBUG)/SpawnButton.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -15,21 +16,12 @@ script = ExtResource( 1 )
 begin_cap_mode = 2
 script = ExtResource( 2 )
 
-[node name="SpawnButton" type="Button" parent="."]
-margin_left = 337.594
-margin_top = 12.5943
-margin_right = 529.594
-margin_bottom = 40.5943
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="SpawnButton"]
-margin_left = 50.0418
-margin_top = 7.00565
-margin_right = 147.042
-margin_bottom = 24.0057
-text = "Spawn Enemy"
+[node name="WaveInformation" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[connection signal="pressed" from="SpawnButton" to="SpawnButton" method="_on_Button_pressed"]
+[node name="SpawnButton" parent="CanvasLayer" instance=ExtResource( 4 )]
+margin_left = 363.05
+margin_top = 15.4227
+margin_right = 555.05
+margin_bottom = 43.4227

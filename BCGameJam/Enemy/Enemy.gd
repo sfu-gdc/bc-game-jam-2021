@@ -38,9 +38,14 @@ func move_towards_point_with_delta(point, delta):
 		position = next_position
 
 func _on_VisibilityNotifier2D_screen_exited():
-	handle_enemy_off_screen()
+	handle_off_screen()
 
-func handle_enemy_off_screen():
+func handle_off_screen():
 	# TODO: Lower player health
 	print("DEBUG: Enemy off screen")
+	handle_death()
+	
+	
+func handle_death():
 	queue_free()	# Delete enemy
+
