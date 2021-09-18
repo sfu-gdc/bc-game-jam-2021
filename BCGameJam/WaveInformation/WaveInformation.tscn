@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://WaveInformation/WaveManager.gd" type="Script" id=1]
+[ext_resource path="res://SpawnButton(DEBUG)/SpawnButton.tscn" type="PackedScene" id=2]
 
 [node name="WaveInformation" type="Panel"]
 margin_right = 354.0
@@ -10,7 +11,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Wave Text" type="Label" parent="."]
+[node name="WaveText" type="Label" parent="."]
 margin_left = 51.1461
 margin_top = 20.8325
 margin_right = 138.146
@@ -20,7 +21,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Wave Count" type="Label" parent="."]
+[node name="WaveCount" type="Label" parent="."]
 margin_left = 93.3468
 margin_top = 21.9029
 margin_right = 133.347
@@ -30,7 +31,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Enemy Text" type="Label" parent="."]
+[node name="EnemyText" type="Label" parent="."]
 margin_left = 148.088
 margin_top = 21.8489
 margin_right = 282.088
@@ -40,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Enemy Count" type="Label" parent="."]
+[node name="EnemyCount" type="Label" parent="."]
 margin_left = 282.051
 margin_top = 22.6165
 margin_right = 322.051
@@ -65,4 +66,11 @@ __meta__ = {
 
 [node name="WaveSpawnTimer" type="Timer" parent="WaveInformationUI"]
 
+[node name="SpawnButton" parent="." instance=ExtResource( 2 )]
+margin_left = 369.092
+margin_top = 18.8939
+margin_right = 561.092
+margin_bottom = 46.8939
+
 [connection signal="timeout" from="WaveInformationUI/EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
+[connection signal="pressed" from="SpawnButton" to="." method="_on_SpawnButton_pressed"]

@@ -10,9 +10,6 @@
 [ext_resource path="res://Assets/Ogre/leg-right.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Ogre/gun.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 280.333, 383.667 )
-
 [sub_resource type="Animation" id=3]
 resource_name = "Run"
 loop = true
@@ -89,16 +86,15 @@ tracks/5/keys = {
 "values": [ 11.3638, -37.9115 ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 142.924, 152.383 )
+
 [node name="Enemy" type="Area2D"]
 scale = Vector2( 0.15, 0.15 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 3, -3 )
-shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -1031.66, -391.995 )
@@ -109,7 +105,7 @@ anims/Run = SubResource( 3 )
 script = ExtResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
-position = Vector2( -1.06658, 147.354 )
+position = Vector2( 0.332, 160 )
 texture = ExtResource( 4 )
 
 [node name="head" type="Sprite" parent="Body"]
@@ -120,36 +116,40 @@ offset = Vector2( -50.4429, -270.398 )
 
 [node name="arm-right" type="Sprite" parent="Body"]
 position = Vector2( 110.514, -43.9286 )
-rotation = -0.797376
+rotation = 1.42978
 z_index = -3
 texture = ExtResource( 6 )
 offset = Vector2( 28.9761, 63.3187 )
 
 [node name="arm-left" type="Sprite" parent="Body"]
 position = Vector2( -106.731, -58.6733 )
-rotation = 0.491725
+rotation = -0.97803
 z_index = 2
 texture = ExtResource( 7 )
 offset = Vector2( -9.48738, 73.5322 )
 
 [node name="club" type="Sprite" parent="Body/arm-left"]
 position = Vector2( 4.48938, 114.491 )
-rotation = -0.582275
+rotation = 0.198336
 z_index = -1
 texture = ExtResource( 9 )
 offset = Vector2( 221.673, -2.94196 )
 
 [node name="leg-left" type="Sprite" parent="Body"]
 position = Vector2( -52.1457, 106.786 )
-rotation = -1.28896
+rotation = 1.18814
 texture = ExtResource( 5 )
 offset = Vector2( -1.6908, 53.6693 )
 
 [node name="leg-right" type="Sprite" parent="Body"]
 position = Vector2( 73.3754, 99.4412 )
-rotation = 1.30959
+rotation = -1.18931
 z_index = -2
 texture = ExtResource( 8 )
 offset = Vector2( 14.3793, 54.5545 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3, -3 )
+shape = SubResource( 2 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
