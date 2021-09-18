@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "CircularBullet",
+"language": "GDScript",
+"path": "res://Bullets/CircularBullet.gd"
+}, {
 "base": "Node2D",
 "class": "Tower",
 "language": "GDScript",
 "path": "res://Tower/Tower.gd"
 } ]
 _global_script_class_icons={
+"CircularBullet": "",
 "Tower": ""
 }
 
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="BCGameJam"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameManager="*res://GameManager.gd"
 
 [input]
 

@@ -1,12 +1,15 @@
 extends Tower
 
 
+func _init():
+	size_radius = 50
+	attack_range = 20
+	attack_cool_down = 0.1
+	attack_dmg = 10
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	size_radius = 15
-	attack_range = 20
-	attack_cool_down = 3
-	attack_dmg = 10
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
