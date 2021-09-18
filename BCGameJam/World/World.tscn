@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=8 format=2]
-=======
-[gd_scene load_steps=6 format=2]
->>>>>>> Stashed changes
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/Line2D.gd" type="Script" id=2]
@@ -181,11 +177,11 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 0.121569, 0.435294, 0.121569, 1, 0.121569, 0.435294, 0.121569, 1 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 width = 1
 
 [node name="World" type="Node2D"]
@@ -196,17 +192,13 @@ current = true
 script = ExtResource( 1 )
 
 [node name="Path" type="Line2D" parent="."]
-<<<<<<< Updated upstream
 z_index = -1
-=======
-default_color = Color( 0.742188, 0.560989, 0.379791, 1 )
->>>>>>> Stashed changes
+default_color = Color( 0.784314, 0.588235, 0.392157, 1 )
 begin_cap_mode = 2
 script = ExtResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-<<<<<<< Updated upstream
 [node name="Portal" type="Sprite" parent="CanvasLayer"]
 material = SubResource( 2 )
 position = Vector2( 512, 300 )
@@ -215,12 +207,9 @@ texture = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="WaveInformation" parent="CanvasLayer" instance=ExtResource( 3 )]
-=======
-[node name="WaveInformation" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
 scale = Vector2( 1024, 600 )
-z_index = -1
-texture = SubResource( 2 )
->>>>>>> Stashed changes
+z_index = -2
+texture = SubResource( 4 )
