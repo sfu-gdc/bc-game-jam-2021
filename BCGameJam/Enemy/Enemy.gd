@@ -41,7 +41,7 @@ func move_towards_point_with_delta(point: Vector2, delta):
 
 func set_correct_direction(next_point: Vector2):
 	var next_direction = 0
-	if next_point.x > 0:
+	if next_point.x >= position.x:
 		next_direction = 1
 	else:
 		next_direction = -1
