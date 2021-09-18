@@ -1,10 +1,14 @@
 extends Area2D
 
-export var speed = 200
+signal death
+
+# Movement
+export var speed = 500
 var path_node_name = "Path"
 var points_in_path = null
 var path_index = 0
 
+# Facing direction
 var curr_direction = 1 # Facing the right
 var direction_change_count = 0
 var direction_change_threshold = 10
@@ -69,5 +73,6 @@ func handle_off_screen():
 	
 	
 func handle_death():
+	emit_signal("death")
 	queue_free()	# Delete enemy
 

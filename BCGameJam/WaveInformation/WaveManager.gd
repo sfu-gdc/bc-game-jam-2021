@@ -20,6 +20,9 @@ func _on_EnemySpawnTimer_timeout():
 func _on_SpawnButton_pressed():
 	spawn_enemy()
 
+func _on_Enemy_death():
+	enemy_count -= 1
+	
 func spawn_enemy():
 	enemy_count += 1
 	
@@ -27,3 +30,4 @@ func spawn_enemy():
 	var enemy = enemy_scene.instance()
 	get_tree().get_current_scene().add_child(enemy)
 	enemy.position = enemy_start_positon
+	enemy.connect("death", self, "_on_Enemy_death")
