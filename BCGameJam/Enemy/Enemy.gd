@@ -1,6 +1,6 @@
 extends Area2D
 
-export var speed = 100
+export var speed = 500
 var path_node_name = "Path"
 var points_in_path = null
 var path_index = 0
@@ -29,5 +29,10 @@ func get_next_point_in_path():
 	
 func move_towards_point_with_delta(point, delta):
 	var velocity = (point - position).normalized() * speed
-	position += velocity * delta;
-	print(point, position)
+	var next_position = position + (velocity * delta);
+	
+	# If our speed is too big, we may pass the point in one movement step. If so, just travel to the point instead
+	if(next_position.distance_to(point) > position.distance_to(point)):
+		position = point
+	else:
+		position = next_position
