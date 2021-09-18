@@ -31,5 +31,4 @@ margin_top = 7.00565
 margin_right = 147.042
 margin_bottom = 24.0057
 text = "Spawn Enemy"
-
 [connection signal="pressed" from="SpawnButton" to="SpawnButton" method="_on_Button_pressed"]
