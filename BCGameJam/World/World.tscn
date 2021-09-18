@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://World/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/Line2D.gd" type="Script" id=2]
 [ext_resource path="res://WaveInformation/WaveInformation.tscn" type="PackedScene" id=3]
-[ext_resource path="res://SpawnButton(DEBUG)/SpawnButton.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -19,9 +18,3 @@ script = ExtResource( 2 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="WaveInformation" parent="CanvasLayer" instance=ExtResource( 3 )]
-
-[node name="SpawnButton" parent="CanvasLayer" instance=ExtResource( 4 )]
-margin_left = 363.05
-margin_top = 15.4227
-margin_right = 555.05
-margin_bottom = 43.4227
