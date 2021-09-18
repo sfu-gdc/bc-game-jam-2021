@@ -4,7 +4,10 @@ export var speed = 200
 var path_node_name = "Path"
 var points_in_path = null
 var path_index = 0
+
 var curr_direction = 1 # Facing the right
+var direction_change_count = 0
+var direction_change_threshold = 10
 
 func _ready():
 	get_Points_in_path()
@@ -47,10 +50,13 @@ func set_correct_direction(next_point: Vector2):
 		next_direction = -1
 	
 	if next_direction != curr_direction:
-		# Flip horizontal
-		scale.x *= -1
-	
-	curr_direction = next_direction
+		direction_change_count += 1
+		if direction_change_count >= direction_change_threshold:
+			# Flip horizontal
+			scale.x *= -1
+			curr_direction = next_direction
+			
+			direction_change_count = 0
 	
 
 func _on_VisibilityNotifier2D_screen_exited():
