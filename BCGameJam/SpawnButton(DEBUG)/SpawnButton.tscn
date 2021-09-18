@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+var enemy_scene = preload(\"res://Enemy/Enemy.tscn\")
+
+func _on_Button_pressed():
+	var enemy_start_positon = Vector2(0, 0)
+	var enemy = enemy_scene.instance()
+	get_tree().get_current_scene().add_child(enemy)
+	enemy.position = enemy_start_positon
+"
+
+[node name="SpawnButton" type="Button"]
+margin_left = 337.594
+margin_top = 12.5943
+margin_right = 529.594
+margin_bottom = 40.5943
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 50.0418
+margin_top = 7.00565
+margin_right = 147.042
+margin_bottom = 24.0057
+text = "Spawn Enemy"
+__meta__ = {
+"_edit_use_anchors_": false
+}

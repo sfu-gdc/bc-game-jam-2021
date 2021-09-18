@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://WaveInformation/WaveManager.gd" type="Script" id=1]
+[ext_resource path="res://SpawnButton(DEBUG)/SpawnButton.tscn" type="PackedScene" id=2]
+
+[node name="WaveInformation" type="Panel"]
+margin_right = 354.0
+margin_bottom = 58.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveText" type="Label" parent="."]
+margin_left = 51.1461
+margin_top = 20.8325
+margin_right = 138.146
+margin_bottom = 39.8325
+text = "Wave:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveCount" type="Label" parent="."]
+margin_left = 93.3468
+margin_top = 21.9029
+margin_right = 133.347
+margin_bottom = 35.9029
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyText" type="Label" parent="."]
+margin_left = 148.088
+margin_top = 21.8489
+margin_right = 282.088
+margin_bottom = 35.8489
+text = "Enemies Remaining: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyCount" type="Label" parent="."]
+margin_left = 282.051
+margin_top = 22.6165
+margin_right = 322.051
+margin_bottom = 36.6165
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaveInformationUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.22693
+margin_top = -0.707108
+margin_right = 3.22681
+margin_bottom = -0.707092
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemySpawnTimer" type="Timer" parent="WaveInformationUI"]
+
+[node name="WaveSpawnTimer" type="Timer" parent="WaveInformationUI"]
+
+[node name="SpawnButton" parent="." instance=ExtResource( 2 )]
+margin_left = 369.092
+margin_top = 18.8939
+margin_right = 561.092
+margin_bottom = 46.8939
+
+[connection signal="timeout" from="WaveInformationUI/EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
+[connection signal="pressed" from="SpawnButton" to="." method="_on_SpawnButton_pressed"]
