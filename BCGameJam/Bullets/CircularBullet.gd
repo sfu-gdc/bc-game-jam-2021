@@ -22,9 +22,10 @@ func _ready():
 
 
 func _process(delta):
-	var mouse_position = get_viewport().get_mouse_position()
+	mouse_position = get_viewport().get_mouse_position()
 	var direction = global_position.direction_to(mouse_position)
 #	velocity = velocity
+#	velocity = velocity.move_toward(direction * speed, acceleration * delta)
 	velocity = direction * speed
 	velocity = move_and_slide(velocity)
 	if global_position.distance_to(mouse_position) < 10:

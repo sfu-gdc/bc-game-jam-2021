@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Clickable",
+"class": "Card",
+"language": "GDScript",
+"path": "res://Card/Card.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "CircularBullet",
 "language": "GDScript",
 "path": "res://Bullets/CircularBullet.gd"
+}, {
+"base": "Node2D",
+"class": "Clickable",
+"language": "GDScript",
+"path": "res://Card/Clickable.gd"
+}, {
+"base": "Sprite",
+"class": "MovingSprite",
+"language": "GDScript",
+"path": "res://Card/MovingSprite.gd"
 }, {
 "base": "Node2D",
 "class": "Tower",
@@ -20,7 +35,10 @@ _global_script_classes=[ {
 "path": "res://Tower/Tower.gd"
 } ]
 _global_script_class_icons={
+"Card": "",
 "CircularBullet": "",
+"Clickable": "",
+"MovingSprite": "",
 "Tower": ""
 }
 
