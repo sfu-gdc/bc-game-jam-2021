@@ -9,7 +9,7 @@ var spawn_button_name = "SpawnButton"
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	get_node("EnemyCount").text = str(enemy_count)
 
 func _on_EnemySpawnTimer_timeout():

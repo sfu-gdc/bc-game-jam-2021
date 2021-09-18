@@ -3,7 +3,7 @@ extends Line2D
 
 
 # Maybe just check that the line doesn't intersect itself, instead of doing all that wacky code stuff. 
-const JUMP_RAD_RATE := 50.0
+const JUMP_RAD_RATE := 40.0
 
 
 var jump_radius := 10.0
@@ -71,17 +71,20 @@ func _ready():
 
 
 func _process(_delta):
+	# Grow everything
 	width = 10.0 * camera.zoom.x
 	jump_radius = JUMP_RAD_RATE * camera.zoom.x
 	
-	if current_radius < 2.0 * camera.zoom.x * get_viewport().size.x:
+	# Generate new points
+	while current_radius < 2.0 * camera.zoom.x * get_viewport().size.x:
 		generate_path_point()
 	
-	var new_points := [points[0]]
+	# Delete any points under the portal
+	var new_points := []
 	var assign := false
 	for index in points.size() - 1:
-		if points[index + 1].distance_squared_to(points[index]) >= pow(width, 2.0):
-			new_points.append(points[index + 1])
+		if points[index + 1].length_squared() > 5625.0 * camera.zoom.x or points[index] == Vector2():
+			new_points.append(points[index])
 		else:
 			assign = true
 	if assign:
