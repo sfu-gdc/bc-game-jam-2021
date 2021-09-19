@@ -16,17 +16,20 @@ texture = ExtResource( 3 )
 
 [node name="SpriteTop" type="Sprite" parent="Sprite"]
 position = Vector2( -9.66067, -419.376 )
+rotation = -1.55334
 scale = Vector2( 1.611, 1.611 )
 texture = ExtResource( 2 )
 offset = Vector2( 66.7166, -26.4735 )
 
-[node name="Area2D" type="Area2D" parent="Sprite"]
+[node name="BulletSource" type="Position2D" parent="Sprite/SpriteTop"]
+position = Vector2( 336.46, -39.9118 )
+
+[node name="Area" type="Area2D" parent="Sprite"]
 position = Vector2( -47.2143, -111.06 )
 scale = Vector2( 1.2565, 1.2565 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D"]
+[node name="Shape" type="CollisionShape2D" parent="Sprite/Area"]
 position = Vector2( 17.6389, -2.51984 )
 shape = SubResource( 1 )
 
-[connection signal="mouse_entered" from="Sprite/Area2D" to="." method="_on_Area2D_mouse_entered"]
-[connection signal="mouse_exited" from="Sprite/Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="area_entered" from="Sprite/Area" to="." method="_on_Area_area_entered"]
