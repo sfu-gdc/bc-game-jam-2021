@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://comic.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Start/Start.gd" type="Script" id=2]
+[ext_resource path="res://Start/StartImage.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
+size = 36
 font_data = ExtResource( 1 )
 
 [node name="Start" type="Node2D"]
@@ -34,10 +37,12 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchor_left = 0.5
-anchor_top = 0.6
+anchor_top = 0.775
 anchor_right = 0.5
-anchor_bottom = 0.6
-margin_right = 12.0
+anchor_bottom = 0.8
+margin_left = -41.0
+margin_top = 3.0
+margin_right = 53.0
 margin_bottom = 20.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 2 )
@@ -45,5 +50,10 @@ text = "START"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+z_index = -1
+texture = ExtResource( 3 )
+offset = Vector2( 512, 300 )
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]
