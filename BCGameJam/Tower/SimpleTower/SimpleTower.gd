@@ -35,6 +35,7 @@ func set_status(stats):
 	attack_range = stats["simple_tower"]["range"]
 	attack_cool_down = stats["simple_tower"]["cool_down"]
 	attack_dmg = stats["simple_tower"]["dmg"]
+	cost = stats["simple_tower"]["cost"]
 
 
 func _on_Area_area_entered(area):

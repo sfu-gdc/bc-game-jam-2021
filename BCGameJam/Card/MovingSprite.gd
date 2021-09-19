@@ -50,10 +50,14 @@ func _input(event):
 
 
 func _add_object():
-	var scene_instance = scene_class.instance()
+	var scene_instance : Node = scene_class.instance()
 	scene_instance.set_status(stats)
-	level_path.add_child(scene_instance)
-	scene_instance.global_position = get_global_mouse_position()
+	if GlobalVars.player_money >= scene_instance.cost:
+		GlobalVars.player_money -= scene_instance.cost
+		level_path.add_child(scene_instance)
+		scene_instance.global_position = get_global_mouse_position()
+	else:
+		scene_instance.queue_free()
 
 
 func _set_size(sprite_node: Sprite, new_width: float) -> void:
