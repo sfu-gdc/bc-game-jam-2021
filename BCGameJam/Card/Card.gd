@@ -18,7 +18,7 @@ var tower_scene : PackedScene
 # stats of the tower
 var stats
 
-onready var level_path = get_node("/root/Main")
+#onready var level_path = get_node("/root/World")
 
 
 func _ready():
@@ -26,6 +26,7 @@ func _ready():
 
 
 func _on_click():
+	var level_path = get_node("/root/World")
 	# upon clicking on the card, the card turns dark if the card hasn't been clicked before
 	if not clicked:
 		_turn_dark()
