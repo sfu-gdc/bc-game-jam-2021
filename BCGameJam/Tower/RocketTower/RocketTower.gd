@@ -42,3 +42,27 @@ func set_status(stats):
 
 func _on_Area_area_entered(area):
 	queue_free()
+
+
+func _on_Area_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_Area_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_Area2_area_shape_entered(area_id, area, area_shape, local_shape):
+	pass # Replace with function body.
+
+
+func _on_Area2_area_shape_exited(area_id, area, area_shape, local_shape):
+	pass # Replace with function body.
+
+
+func _on_Area2_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_Area2_mouse_exited():
+	pass # Replace with function body.
