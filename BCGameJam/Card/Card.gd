@@ -10,15 +10,13 @@ var moving_sprite_class = preload("res://Card/MovingSprite.gd")
 # scale the texture or not
 var texture_size_radius : int
 # scene class to be instanced and placed after clicking while dragging
-var scene_class
+var scene_class : PackedScene
+
+var tower : Tower
 # the moving sprite that will appear when the user clicks on the texture
 var new_moving_sprite
-# the scene of the tower
-var tower_scene : PackedScene
 # stats of the tower
 var stats
-
-#onready var level_path = get_node("/root/World")
 
 
 func _ready():
@@ -32,7 +30,7 @@ func _on_click():
 		_turn_dark()
 		clicked = true
 		
-		new_moving_sprite = moving_sprite_class.new(image_texture, scene_class, stats, level_path, texture_size_radius)
+		new_moving_sprite = moving_sprite_class.new(image_texture, scene_class, stats, level_path, texture_size_radius, self)
 		
 		level_path.add_child(new_moving_sprite)
 		new_moving_sprite.global_position = global_position
@@ -41,16 +39,17 @@ func _on_click():
 		if new_moving_sprite == null:
 			print("Error! new_moving_sprite is null in Card")
 		elif new_moving_sprite != null:
-#			_create_new_tower(tower_scene)
 			new_moving_sprite.queue_free()
 			new_moving_sprite = null
 			# reset the click
 			clicked = false
 
 
-#func _create_new_tower(scene: PackedScene):
-#	var tower = scene.instance()
-#	level_path.add_child(tower)
+func clicked_sprite():
+	clicked = false
+	_turn_back()
+	new_moving_sprite.queue_free()
+	new_moving_sprite = null
 
 
 func _turn_dark():
