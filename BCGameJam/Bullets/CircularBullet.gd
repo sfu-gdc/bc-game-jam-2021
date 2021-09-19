@@ -27,8 +27,6 @@ func _process(delta):
 		var direction = get_direction_to_enemy(target_position)
 		
 		fire_homing_missle(target_position, delta)
-		
-		response_if_hit_enemy(target_position)
 	else:
 		queue_free()
 
@@ -42,13 +40,6 @@ func fire_homing_missle(target_position: Vector2, delta):
 func fire_rocket(_speed, direction, _delta):
 	velocity = velocity.move_toward(direction * speed, rocket_acceleration * _delta)
 	velocity = move_and_slide(velocity)
-
-
-# check if the bullet hits the enemy. If the bullet hits, then emit signal, and delete the bullet
-func response_if_hit_enemy(target_position):
-	if global_position.distance_to(target_position) < 10:
-		emit_signal("hit")
-		queue_free()
 
 
 # get the direction of bullets towards the enemy
