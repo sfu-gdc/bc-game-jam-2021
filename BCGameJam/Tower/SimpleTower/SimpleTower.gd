@@ -7,8 +7,9 @@ const scale_negative_y : float = -1.611
 
 
 func _process(delta):
-	if target == null: return
+	if targets.size() <= 0: return
 	
+	var target = targets[0]
 	if sprite_top.get_angle_to(target.position) > 0:
 		sprite_top.rotation += aim_speed * delta
 	else:

@@ -21,7 +21,7 @@ var hover_alpha = 0.75
 var time_counter : float = 100.0
 var size_counter : float = 1.0
 
-var target = null
+var targets = []
 var SimpleBullet = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
 
 # ratio between bullet and tower
@@ -53,10 +53,12 @@ func _process(delta):
 
 
 func fire_bullet():
+	if(targets.size() <= 0): return
+	
 	# get the bullet node
 	var bullet = SimpleBullet.instance()
 	bullet.dmg = attack_dmg
-	bullet.target = target
+	bullet.target = targets[0]
 	
 	# set the size of bullet srpte
 	_set_bullet_size(bullet)
@@ -106,8 +108,7 @@ func _on_Area2D_mouse_exited():
 	update()
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
-	target = area
+	targets.append(area)
 
 func _on_Area2D_area_shape_exited(area_id, area, area_shape, local_shape):
-	if (target == area):
-		target = null
+	targets.erase(area)
