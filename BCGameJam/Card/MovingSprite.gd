@@ -8,13 +8,17 @@ signal sprite_clicked
 
 var scene_class
 var level_path
+var texture_size_radius: int
+var stats
 
 
-func _init(image_texture, _scene_class, path, scale):
+func _init(image_texture, _scene_class, _stats, path, _texture_size_radius: int):
 	# instantiate all the variables
 	texture = image_texture
 	scene_class = _scene_class
-	level_path = path	
+	stats = _stats
+	level_path = path
+	texture_size_radius = _texture_size_radius
 	
 	if scene_class == null:
 		print("In moving sprite, item is null, card returns a null object")
@@ -25,7 +29,8 @@ func _ready():
 	# set the texture to be half transparent
 	set_modulate(Color(0.75, 0.75, 0.75, 0.75))
 	# set the scale of the texture
-	set_scale(Vector2(0.25, 0.25))
+	var width = 2 * texture_size_radius
+	_set_size(self, width)
 
 
 func _input(event):
@@ -42,5 +47,16 @@ func _input(event):
 
 func _add_object():
 	var scene_instance = scene_class.instance()
+	scene_instance.set_status(stats)
 	level_path.add_child(scene_instance)
 	scene_instance.global_position = get_global_mouse_position()
+
+
+func _set_size(sprite_node: Sprite, new_width: float) -> void:
+	var width : float = sprite_node.get_texture().get_width()
+	var new_ratio = new_width / width
+	_scale_size(sprite_node, new_ratio)
+
+
+func _scale_size(sprite_node: Sprite, scale: float) -> void:
+	sprite_node.set_scale(Vector2(scale, scale));
