@@ -8,6 +8,9 @@ var placing_time : float = 0.0
 var is_area_entered : bool = false
 
 
+
+
+
 func _process(delta):
 	if targets.size() <= 0: return
 	
@@ -36,6 +39,7 @@ func set_status(stats):
 	attack_cool_down = stats["simple_tower"]["cool_down"]
 	attack_dmg = stats["simple_tower"]["dmg"]
 	cost = stats["simple_tower"]["cost"]
+	bullet = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
 
 
 func _on_Area_area_entered(area):
