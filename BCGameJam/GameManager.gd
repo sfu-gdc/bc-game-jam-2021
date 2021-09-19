@@ -1,19 +1,38 @@
 extends Node
 
-var SimpleBullet : PackedScene = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
-var SimpleTower : PackedScene = preload("res://Tower/SimpleTower/SimpleTower.tscn")
+var tower_stats = {
+	"simple_tower": {
+		"radius": 50,
+		"range": 20,
+		"cool_down": 0.1,
+		"dmg": 10
+	}
+}
+
+var SimpleTowerCard : PackedScene = preload("res://Card/SimpleTowerCard/SimpleTowerCard.tscn")
 
 onready var GameScene : Node = get_node("/root/Main")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var tower = SimpleTower.instance()
-	GameScene.add_child(tower)
-	tower.global_position.x = 500
-	tower.global_position.y = 250
+	instance_simple_tower_card()
 
+# instance the simple tower card
+func instance_simple_tower_card():
+	var tower_card = SimpleTowerCard.instance()
+	tower_card._set_card_moving_mechanmic(tower_stats["simple_tower"]["radius"])
+	tower_card.stats = tower_stats
+	GameScene.add_child(tower_card)
+	tower_card.global_position.x = 500
+	tower_card.global_position.y = 250
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# set the size of the sprite to a new width
+func _set_size(sprite_node: Sprite, new_width: float) -> void:
+	var width : float = sprite_node.get_texture().get_width()
+	var new_ratio = new_width / width
+	_scale_size(sprite_node, new_ratio)
+
+# scale the sprite, for internal use
+func _scale_size(sprite_node: Sprite, scale: float) -> void:
+	sprite_node.set_scale(Vector2(scale, scale));

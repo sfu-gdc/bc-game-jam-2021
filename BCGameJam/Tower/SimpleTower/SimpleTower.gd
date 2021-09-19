@@ -1,17 +1,9 @@
 extends Tower
 
 
-func _init():
-	size_radius = 50
-	attack_range = 20
-	attack_cool_down = 0.1
-	attack_dmg = 10
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func set_status(stats):
+	print(stats)
+	size_radius = stats["simple_tower"]["radius"]
+	attack_range = stats["simple_tower"]["range"]
+	attack_cool_down = stats["simple_tower"]["cool_down"]
+	attack_dmg = stats["simple_tower"]["dmg"]

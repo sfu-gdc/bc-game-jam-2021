@@ -51,6 +51,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Timer" type="Label" parent="."]
+margin_left = 2.52554
+margin_top = 20.2043
+margin_right = 42.5255
+margin_bottom = 34.2043
+text = "TIMER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="WaveInformationUI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -63,14 +73,17 @@ __meta__ = {
 }
 
 [node name="EnemySpawnTimer" type="Timer" parent="WaveInformationUI"]
+autostart = true
 
-[node name="WaveSpawnTimer" type="Timer" parent="WaveInformationUI"]
+[node name="WaveStartTimer" type="Timer" parent="WaveInformationUI"]
+one_shot = true
+autostart = true
 
 [node name="SpawnButton" parent="." instance=ExtResource( 2 )]
 margin_left = 369.092
 margin_top = 18.8939
 margin_right = 561.092
 margin_bottom = 46.8939
-
 [connection signal="timeout" from="WaveInformationUI/EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
+[connection signal="timeout" from="WaveInformationUI/WaveStartTimer" to="." method="_on_WaveStartTimer_timeout"]
 [connection signal="pressed" from="SpawnButton" to="." method="_on_SpawnButton_pressed"]
