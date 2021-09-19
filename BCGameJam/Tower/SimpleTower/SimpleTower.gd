@@ -23,13 +23,10 @@ func _process(delta):
 	else:
 		sprite_top.scale.y = scale_negative_y
 	
-	print(fmod(sprite_top.rotation - PI / 2 , 2 * PI))
-	
 	placing_time += delta
 
 
 func set_status(stats):
-	print(stats)
 	size_radius = stats["simple_tower"]["radius"]
 	attack_range = stats["simple_tower"]["range"]
 	attack_cool_down = stats["simple_tower"]["cool_down"]

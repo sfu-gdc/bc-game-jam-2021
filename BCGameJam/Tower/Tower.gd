@@ -108,7 +108,8 @@ func _on_Area2D_mouse_exited():
 	update()
 
 func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
-	targets.append(area)
+	if(area.collision_layer == 2):
+		targets.append(area)
 
 func _on_Area2D_area_shape_exited(area_id, area, area_shape, local_shape):
 	targets.erase(area)

@@ -2,6 +2,9 @@ extends Area2D
 
 signal death
 
+# Health
+var health = 1
+
 # Movement
 export var speed = 250
 var path_node_name = "Path"
@@ -14,6 +17,8 @@ var direction_change_count = 0
 var direction_change_threshold = 10
 
 var starting_z_index = null
+
+var is_dead = false
 func _ready():
 	get_Points_in_path()
 	starting_z_index = z_index
@@ -74,6 +79,7 @@ func set_z_index(next_point):
 		z_index = starting_z_index
 
 func _on_VisibilityNotifier2D_screen_exited():
+	if is_dead: return
 	handle_off_screen()
 
 func handle_off_screen():
@@ -81,8 +87,16 @@ func handle_off_screen():
 	print("DEBUG: Enemy off screen")
 	handle_death()
 	
+func handle_hit():
+	health -= 1
+	if health < 1:
+		handle_death()
 	
 func handle_death():
+	is_dead = true
 	emit_signal("death")
 	queue_free()	# Delete enemy
 
+func _on_Enemy_body_shape_entered(body_id, body, body_shape, local_shape):
+	body.queue_free()
+	handle_hit()
