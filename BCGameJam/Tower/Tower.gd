@@ -57,7 +57,7 @@ func fire_bullet():
 	
 	# set the bullet position to be the tower position
 	bullet.global_position.x = global_position.x
-	bullet.global_position.y = global_position.y - 60
+	bullet.global_position.y = global_position.y - 63
 
 
 

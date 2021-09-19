@@ -14,7 +14,6 @@ texture = ExtResource( 3 )
 
 [node name="SpriteTop" type="Sprite" parent="Sprite"]
 position = Vector2( -9.66067, -419.376 )
-rotation = -0.204204
 scale = Vector2( 1.611, 1.611 )
 texture = ExtResource( 2 )
 offset = Vector2( 66.7166, -26.4735 )
