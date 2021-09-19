@@ -105,6 +105,7 @@ func handle_hit(body):
 	health -= 1
 	update_health_bar()
 	if health < 1:
+		GlobalVars.player_money += max_health
 		handle_death()
 		emit_blood()
 

@@ -42,4 +42,5 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="button_up" from="RestartButton" to="RestartButton" method="_on_RestartButton_button_up"]

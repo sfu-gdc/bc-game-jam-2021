@@ -31,10 +31,14 @@ func _process(delta):
 
 
 func set_status(stats):
+	print(stats)
 	size_radius = stats["rocket_tower"]["radius"]
 	attack_range = stats["rocket_tower"]["range"]
 	attack_cool_down = stats["rocket_tower"]["cool_down"]
 	attack_dmg = stats["rocket_tower"]["dmg"]
+	cost = stats["rocket_tower"]["cost"]
+
+
 
 
 func _on_Area_area_entered(area):

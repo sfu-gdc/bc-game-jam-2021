@@ -84,6 +84,7 @@ margin_left = 369.092
 margin_top = 18.8939
 margin_right = 561.092
 margin_bottom = 46.8939
+
 [connection signal="timeout" from="WaveInformationUI/EnemySpawnTimer" to="." method="_on_EnemySpawnTimer_timeout"]
 [connection signal="timeout" from="WaveInformationUI/WaveStartTimer" to="." method="_on_WaveStartTimer_timeout"]
 [connection signal="pressed" from="SpawnButton" to="." method="_on_SpawnButton_pressed"]

@@ -11,6 +11,7 @@ var size_radius : float
 var attack_range : float
 var attack_cool_down : float
 var attack_dmg : float
+var cost: int
 
 # Hover related
 var draw_attack_range = false

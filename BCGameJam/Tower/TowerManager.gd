@@ -6,13 +6,15 @@ var tower_stats = {
 		"radius": 50,
 		"range": 300,
 		"cool_down": 0.75,
-		"dmg": 10
+		"dmg": 10,
+		"cost": 10
 	},
 	"rocket_tower": {
 		"radius": 50,
 		"range": 300,
 		"cool_down": 1,
-		"dmg": 10
+		"dmg": 10,
+		"cost": 15
 	}
 }
 
