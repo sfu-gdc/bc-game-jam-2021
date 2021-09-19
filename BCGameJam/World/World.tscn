@@ -185,7 +185,7 @@ current = true
 script = ExtResource( 1 )
 
 [node name="Path" type="Line2D" parent="."]
-z_index = -1
+z_index = -4096
 begin_cap_mode = 2
 script = ExtResource( 2 )
 

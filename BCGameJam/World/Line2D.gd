@@ -90,4 +90,3 @@ func _process(_delta):
 	if assign:
 		points = new_points
 	
-	print(points.size())
