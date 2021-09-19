@@ -4,7 +4,7 @@ extends Node
 var tower_stats = {
 	"simple_tower": {
 		"radius": 50,
-		"range": 20,
+		"range": 300,
 		"cool_down": 0.1,
 		"dmg": 10
 	}
