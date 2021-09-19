@@ -25,6 +25,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 66.7166, -26.4735 )
 
 [node name="BulletSource" type="Position2D" parent="Sprite/SpriteTop"]
+visible = false
 position = Vector2( 336.46, -39.9118 )
 
 [node name="Area" type="Area2D" parent="Sprite"]
@@ -39,6 +40,7 @@ shape = SubResource( 1 )
 collision_mask = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Area"]
+visible = false
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Sprite/Area" to="." method="_on_Area_area_entered"]
