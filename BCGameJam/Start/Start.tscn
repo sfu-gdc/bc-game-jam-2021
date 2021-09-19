@@ -55,4 +55,5 @@ __meta__ = {
 z_index = -1
 texture = ExtResource( 3 )
 offset = Vector2( 512, 300 )
+
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_Button_pressed"]

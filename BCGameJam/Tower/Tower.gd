@@ -11,6 +11,7 @@ var size_radius : float
 var attack_range : float
 var attack_cool_down : float
 var attack_dmg : float
+var cost: int
 
 # Hover related
 var draw_attack_range = false
@@ -18,7 +19,7 @@ var attack_range_color = Color(1, 0, 0, 0.3)
 var hover_alpha = 0.75
 
 # once the time counter reaches attack_cool_down, fire the bullet
-var time_counter : float = 100.0
+var time_counter : float = 0.0
 var size_counter : float = 1.0
 
 var targets = []
@@ -29,15 +30,16 @@ const bullet_to_tower_ratio : float = 0.2
 
 # nodes
 onready var GameScene : Node = get_node("/root/World")
-onready var collisionRange = get_node("Sprite").get_child(2).get_child(0)
+onready var collisionRange = get_node("Area/Shape")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("timeout", self, "fire_bullet")
 	var width : float = 2 * size_radius
 	_set_size($Sprite, width)
-	collisionRange.shape.radius = attack_range * PI * 2
-
+	collisionRange.shape.set_radius(attack_range)
+	
+	
 func _draw():
 	if draw_attack_range:
 		draw_circle(Vector2(0, 0), attack_range, attack_range_color)

@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Animals/Portal.png" type="Texture" id=4]
 [ext_resource path="res://World/Portal.gd" type="Script" id=5]
 [ext_resource path="res://Tower/TowerManager.gd" type="Script" id=6]
-[ext_resource path="res://World/Health.gd" type="Script" id=7]
+[ext_resource path="res://World/HUD.gd" type="Script" id=7]
 [ext_resource path="res://comic.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="Shader" id=1]
@@ -203,6 +203,7 @@ script = ExtResource( 2 )
 script = ExtResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 7 )
 
 [node name="Portal" type="Sprite" parent="CanvasLayer"]
 material = SubResource( 2 )
@@ -221,8 +222,21 @@ anchor_bottom = 0.108
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 3 )
-text = "Lives: "
-script = ExtResource( 7 )
+text = "Lives: 10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Money" type="Label" parent="CanvasLayer"]
+anchor_left = 0.011
+anchor_top = 0.108
+anchor_right = 0.011
+anchor_bottom = 0.108
+margin_top = 25.7953
+margin_right = 107.0
+margin_bottom = 48.7953
+custom_fonts/font = SubResource( 3 )
+text = "Money: 99999"
 __meta__ = {
 "_edit_use_anchors_": false
 }
