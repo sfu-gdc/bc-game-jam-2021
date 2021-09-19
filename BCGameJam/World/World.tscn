@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://World/Line2D.gd" type="Script" id=2]
 [ext_resource path="res://WaveInformation/WaveInformation.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Portal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Animals/Portal.png" type="Texture" id=4]
 [ext_resource path="res://World/Portal.gd" type="Script" id=5]
+[ext_resource path="res://Tower/TowerManager.gd" type="Script" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -213,3 +214,6 @@ position = Vector2( 512, 300 )
 scale = Vector2( 1024, 600 )
 z_index = -4096
 texture = SubResource( 4 )
+
+[node name="TowerManager" type="Node" parent="."]
+script = ExtResource( 6 )

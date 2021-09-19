@@ -1,3 +1,4 @@
+class_name TowerManager
 extends Node
 
 var tower_stats = {
@@ -11,9 +12,6 @@ var tower_stats = {
 
 var SimpleTowerCard : PackedScene = preload("res://Card/SimpleTowerCard/SimpleTowerCard.tscn")
 
-onready var GameScene : Node = get_node("/root/Main")
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instance_simple_tower_card()
@@ -23,7 +21,9 @@ func instance_simple_tower_card():
 	var tower_card = SimpleTowerCard.instance()
 	tower_card._set_card_moving_mechanmic(tower_stats["simple_tower"]["radius"])
 	tower_card.stats = tower_stats
-	GameScene.add_child(tower_card)
+	add_child(tower_card)
+	
+	# change to screen coordiantes instead of world (figure it out)
 	tower_card.global_position.x = 500
 	tower_card.global_position.y = 250
 

@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Tower/SimpleTower/SimpleTower.gd" type="Script" id=1]
-[ext_resource path="res://Assets/elephant.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Turret/Turret.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Turret/TurretBase.png" type="Texture" id=3]
 
 [node name="SimpleTower" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-z_index = 1
+position = Vector2( 109.376, 92.764 )
+scale = Vector2( 0.79586, 0.79586 )
+texture = ExtResource( 3 )
+
+[node name="SpriteTop" type="Sprite" parent="Sprite"]
+position = Vector2( -9.66067, -419.376 )
+scale = Vector2( 1.6108, 1.6108 )
 texture = ExtResource( 2 )
+offset = Vector2( 66.7166, -26.4735 )

@@ -22,7 +22,7 @@ var SimpleBullet = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
 const bullet_to_tower_ratio : float = 0.2
 
 # nodes
-onready var GameScene : Node = get_node("/root/Main")
+onready var GameScene : Node = get_node("/root/World")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
