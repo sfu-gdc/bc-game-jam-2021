@@ -44,6 +44,7 @@ shape = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
 [connection signal="area_entered" from="Sprite/Area" to="." method="_on_Area_area_entered"]
 [connection signal="mouse_entered" from="Sprite/Area" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Area" to="." method="_on_Area2D_mouse_exited"]
