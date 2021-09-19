@@ -10,6 +10,9 @@ var is_area_entered : bool = false
 
 
 func _process(delta):
+	if targets.size() <= 0: return
+	
+	var target = targets[0]
 	var mouse_position = get_global_mouse_position()
 	if sprite_top.get_angle_to(mouse_position) > 0:
 		sprite_top.rotation += aim_speed * delta
@@ -22,7 +25,6 @@ func _process(delta):
 	else:
 		sprite_top.scale.y = scale_negative_y
 	
-	print(fmod(sprite_top.rotation - PI / 2 , 2 * PI))
 	if placing_time > 0.1 and not is_area_entered:
 		get_node("Sprite/Area").disconnect("area_entered", self, "_on_Area_area_entered")
 		is_area_entered = true
@@ -39,32 +41,5 @@ func set_status(stats):
 	cost = stats["rocket_tower"]["cost"]
 	bullet = preload("res://Bullets/Missle/Missle.tscn")
 
-
-
-
 func _on_Area_area_entered(area):
 	queue_free()
-
-
-func _on_Area_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_Area_mouse_exited():
-	pass # Replace with function body.
-
-
-func _on_Area2_area_shape_entered(area_id, area, area_shape, local_shape):
-	pass # Replace with function body.
-
-
-func _on_Area2_area_shape_exited(area_id, area, area_shape, local_shape):
-	pass # Replace with function body.
-
-
-func _on_Area2_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_Area2_mouse_exited():
-	pass # Replace with function body.

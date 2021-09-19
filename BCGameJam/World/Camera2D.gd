@@ -8,3 +8,4 @@ func _ready():
 
 func _process(delta):
 	zoom += 0.01 * zoom.x * Vector2(delta, delta)
+	GlobalVars.world_scale = zoom.x
