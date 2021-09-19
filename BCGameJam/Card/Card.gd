@@ -15,6 +15,8 @@ var scene_class : PackedScene
 var tower : Tower
 # the moving sprite that will appear when the user clicks on the texture
 var new_moving_sprite
+# check if there's already a moving sprite
+var _has_moving_sprite : bool = false
 # stats of the tower
 var stats
 
@@ -41,15 +43,16 @@ func _on_click():
 		elif new_moving_sprite != null:
 			new_moving_sprite.queue_free()
 			new_moving_sprite = null
-			# reset the click
 			clicked = false
+			_turn_back()
 
 
 func clicked_sprite():
-	clicked = false
-	_turn_back()
-	new_moving_sprite.queue_free()
-	new_moving_sprite = null
+	if not mouse_on_area:
+		clicked = false
+		_turn_back()
+		new_moving_sprite.queue_free()
+		new_moving_sprite = null
 
 
 func _turn_dark():

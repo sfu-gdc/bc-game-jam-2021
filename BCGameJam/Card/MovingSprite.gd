@@ -10,15 +10,17 @@ var scene_class
 var level_path
 var texture_size_radius: int
 var stats
+var card
 
 
-func _init(image_texture, _scene_class, _stats, path, _texture_size_radius: int, card):
+func _init(image_texture, _scene_class, _stats, path, _texture_size_radius: int, _card):
 	# instantiate all the variables
 	texture = image_texture
 	scene_class = _scene_class
 	stats = _stats
 	level_path = path
 	texture_size_radius = _texture_size_radius
+	card = _card
 	connect("sprite_clicked", card, "clicked_sprite")
 	
 	if scene_class == null:
@@ -43,7 +45,8 @@ func _input(event):
 	elif event is InputEventMouseButton and event.button_index == BUTTON_LEFT \
 			and event.is_pressed():
 		emit_signal("sprite_clicked")
-		_add_object()
+		if not card.mouse_on_area:
+			_add_object()
 
 
 func _add_object():
