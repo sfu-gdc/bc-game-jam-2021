@@ -19,6 +19,7 @@ var direction_change_count := 0
 var direction_change_threshold := 10
 
 var starting_z_index = null
+var blood_particles = preload("res://Particles/Blood.tscn")
 
 func update_health_bar():
 	get_node("HealthBar/ProgressBar").value = health
@@ -100,12 +101,18 @@ func handle_off_screen():
 	print("DEBUG: Enemy off screen")
 	handle_death()
 	
-func handle_hit():
+func handle_hit(body):
 	health -= 1
 	update_health_bar()
 	if health < 1:
 		handle_death()
-	
+		emit_blood()
+
+func emit_blood():
+	var blood = blood_particles.instance()
+	blood.global_position = global_position
+	get_tree().get_current_scene().add_child(blood)
+
 func handle_death():
 	is_dead = true
 	emit_signal("death")
@@ -113,4 +120,4 @@ func handle_death():
 
 func _on_Enemy_body_shape_entered(body_id, body, body_shape, local_shape):
 	body.queue_free()
-	handle_hit()
+	handle_hit(body)
