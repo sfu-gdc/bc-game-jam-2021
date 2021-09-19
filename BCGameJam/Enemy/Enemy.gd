@@ -38,7 +38,7 @@ func _ready():
 	
 	# Scale enemy based on world scale
 	health = ceil(HEALTH_SCALE * (GlobalVars.current_wave + 1))
-  max_health = health
+	max_health = health
 	speed = floor(SPEED_SCALE * GlobalVars.world_scale)
 	$Body.scale *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
 	var collision_shape = $CollisionShape2D
