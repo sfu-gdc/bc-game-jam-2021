@@ -22,7 +22,6 @@ func _process(delta):
 	else:
 		sprite_top.scale.y = scale_negative_y
 	
-	print(fmod(sprite_top.rotation - PI / 2 , 2 * PI))
 	if placing_time > 0.1 and not is_area_entered:
 		get_node("Sprite/Area").disconnect("area_entered", self, "_on_Area_area_entered")
 		is_area_entered = true
@@ -37,29 +36,3 @@ func set_status(stats):
 	attack_dmg = stats["rocket_tower"]["dmg"]
 
 
-func _on_Area_area_entered(area):
-	queue_free()
-
-
-func _on_Area_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_Area_mouse_exited():
-	pass # Replace with function body.
-
-
-func _on_Area2_area_shape_entered(area_id, area, area_shape, local_shape):
-	pass # Replace with function body.
-
-
-func _on_Area2_area_shape_exited(area_id, area, area_shape, local_shape):
-	pass # Replace with function body.
-
-
-func _on_Area2_mouse_entered():
-	pass # Replace with function body.
-
-
-func _on_Area2_mouse_exited():
-	pass # Replace with function body.
