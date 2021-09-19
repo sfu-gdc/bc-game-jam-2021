@@ -33,6 +33,7 @@ func startNextWave():
 func handleWaveEnd():
 	is_wave_active = false
 	wave_count += 1
+	total_enemies_spawned = 0
 	num_enemies_to_spawn = 10 + 5 * wave_count
 	wave_start_timer.start(wave_start_time)
 	
