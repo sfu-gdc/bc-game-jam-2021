@@ -90,6 +90,7 @@ tracks/5/keys = {
 extents = Vector2( 92.0715, 336.262 )
 
 [node name="Enemy" type="Area2D"]
+position = Vector2( 0, -0.712769 )
 scale = Vector2( 0.15, 0.15 )
 collision_layer = 2
 collision_mask = 4
@@ -99,7 +100,8 @@ __meta__ = {
 }
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -1031.66, -391.995 )
+position = Vector2( 38.014, -407.463 )
+scale = Vector2( 31.6488, 46.4981 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
@@ -153,6 +155,5 @@ offset = Vector2( 14.3793, 54.5545 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 4.87082, -288.104 )
 shape = SubResource( 2 )
-
 [connection signal="body_shape_entered" from="." to="." method="_on_Enemy_body_shape_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

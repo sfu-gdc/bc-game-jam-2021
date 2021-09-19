@@ -7,4 +7,4 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 func _process(delta):
-	zoom += 0.02 * zoom.x * Vector2(delta, delta)
+	zoom += 0.01 * zoom.x * Vector2(delta, delta)
