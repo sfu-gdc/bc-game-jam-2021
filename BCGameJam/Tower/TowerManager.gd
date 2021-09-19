@@ -34,16 +34,16 @@ func instance_simple_tower_card():
 	get_node("../CanvasLayer").add_child(tower_card)
 	
 	# change to screen coordiantes instead of world (figure it out)
-	tower_card.global_position.x = 700
-	tower_card.global_position.y = 30
+	tower_card.global_position.x = 150
+	tower_card.global_position.y = 40
 	
 	var rocket_tower_card = RocketTowerCard.instance()
 	rocket_tower_card._set_card_moving_mechanmic(tower_stats["rocket_tower"]["radius"])
 	rocket_tower_card.stats = tower_stats
 	get_node("../CanvasLayer").add_child(rocket_tower_card)
 	
-	rocket_tower_card.global_position.x = 750
-	rocket_tower_card.global_position.y = 30
+	rocket_tower_card.global_position.x = 250
+	rocket_tower_card.global_position.y = 40
 	
 
 # set the size of the sprite to a new width
