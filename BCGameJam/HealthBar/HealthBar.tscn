@@ -3,13 +3,13 @@
 [ext_resource path="res://comic.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
-size = 96
+size = 150
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.247059, 0.686275, 0.247059, 1 )
+bg_color = Color( 0.184314, 0.560784, 0.184314, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.247059, 0.247059, 0.247059, 1 )
@@ -17,10 +17,10 @@ bg_color = Color( 0.247059, 0.247059, 0.247059, 1 )
 [node name="HealthBar" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-margin_left = -225.0
-margin_top = -120.0
-margin_right = 225.0
-margin_bottom = 151.0
+margin_left = -300.0
+margin_top = -200.0
+margin_right = 300.0
+margin_bottom = 223.0
 grow_horizontal = 2
 custom_fonts/font = SubResource( 1 )
 text = "10
@@ -31,8 +31,8 @@ __meta__ = {
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-margin_left = -225.0
-margin_right = 225.0
+margin_left = -300.0
+margin_right = 300.0
 margin_bottom = 40.0
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
