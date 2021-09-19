@@ -54,10 +54,6 @@ config/name="BCGameJam"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-GameManager="*res://Tower/TowerManager.gd"
-
 [input]
 
 click={
