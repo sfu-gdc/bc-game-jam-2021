@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Turret/RocketTower.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Turret/RocketTowerBase.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 14.7482, -195.532 )
+texture = ExtResource( 2 )
+
+[node name="SpriteTop" type="Sprite" parent="Sprite"]
+position = Vector2( -17.8176, -326.069 )
+texture = ExtResource( 1 )
+offset = Vector2( 26.7266, -119.38 )

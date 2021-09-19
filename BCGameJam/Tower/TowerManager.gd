@@ -7,6 +7,12 @@ var tower_stats = {
 		"range": 300,
 		"cool_down": 0.1,
 		"dmg": 10
+	},
+	"rocket_tower": {
+		"radius": 50,
+		"range": 300,
+		"cool_down": 0.1,
+		"dmg": 10
 	}
 }
 
