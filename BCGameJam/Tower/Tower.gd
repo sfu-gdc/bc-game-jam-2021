@@ -12,6 +12,11 @@ var attack_range : float
 var attack_cool_down : float
 var attack_dmg : float
 
+# Hover related
+var draw_attack_range = false
+var attack_range_color = Color(1, 0, 0, 0.3)
+var hover_alpha = 0.75
+
 # once the time counter reaches attack_cool_down, fire the bullet
 var time_counter : float = 100.0
 var size_counter : float = 1.0
@@ -30,6 +35,9 @@ func _ready():
 	var width : float = 2 * size_radius
 	_set_size($Sprite, width)
 
+func _draw():
+	if draw_attack_range:
+		draw_circle(position, attack_range, attack_range_color)
 
 # whenever time reaches cool down, fire bullets and reset time
 func _process(delta):
@@ -82,3 +90,14 @@ func _set_size(sprite_node: Sprite, new_width: float) -> void:
 # scale the sprite, for internal use
 func _scale_size(sprite_node: Sprite, scale: float) -> void:
 	sprite_node.set_scale(Vector2(scale, scale));
+
+func _on_Area2D_mouse_entered():
+	$Sprite.modulate = Color(1, 1, 1, hover_alpha) # blue shade
+	"hello"
+	draw_attack_range = true
+	update()
+
+func _on_Area2D_mouse_exited():
+	$Sprite.modulate = Color(1, 1, 1, 1) # blue shade
+	draw_attack_range = false
+	update()
