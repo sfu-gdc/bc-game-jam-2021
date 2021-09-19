@@ -54,6 +54,10 @@ config/name="BCGameJam"
 run/main_scene="res://Start/Start.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalVars="*res://GlobalVars.gd"
+
 [global]
 
 coll=false
