@@ -13,7 +13,6 @@ extents = Vector2( 85.745, 286.024 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 11.1892, -181.275 )
 texture = ExtResource( 2 )
 
 [node name="SpriteTop" type="Sprite" parent="Sprite"]
@@ -29,22 +28,24 @@ scale = Vector2( 1.28213, 1.28213 )
 [node name="Area" type="Area2D" parent="Sprite"]
 position = Vector2( -9.56573, 92.8872 )
 scale = Vector2( 0.999998, 0.999998 )
+collision_layer = 8
+collision_mask = 8
 
 [node name="Shape" type="CollisionShape2D" parent="Sprite/Area"]
 position = Vector2( -19.779, -100.519 )
 shape = SubResource( 1 )
 
-[node name="Area2" type="Area2D" parent="Sprite"]
+[node name="Area" type="Area2D" parent="."]
 position = Vector2( -9.56573, 92.8872 )
 scale = Vector2( 0.999998, 0.999998 )
 
-[node name="Shape" type="CollisionShape2D" parent="Sprite/Area2"]
+[node name="Shape" type="CollisionShape2D" parent="Area"]
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="Sprite/Area" to="." method="_on_Area_area_entered"]
 [connection signal="mouse_entered" from="Sprite/Area" to="." method="_on_Area_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite/Area" to="." method="_on_Area_mouse_exited"]
-[connection signal="area_shape_entered" from="Sprite/Area2" to="." method="_on_Area2_area_shape_entered"]
-[connection signal="area_shape_exited" from="Sprite/Area2" to="." method="_on_Area2_area_shape_exited"]
-[connection signal="mouse_entered" from="Sprite/Area2" to="." method="_on_Area2_mouse_entered"]
-[connection signal="mouse_exited" from="Sprite/Area2" to="." method="_on_Area2_mouse_exited"]
+[connection signal="area_shape_entered" from="Area" to="." method="_on_Area2_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area" to="." method="_on_Area2_area_shape_exited"]
+[connection signal="mouse_entered" from="Area" to="." method="_on_Area2_mouse_entered"]
+[connection signal="mouse_exited" from="Area" to="." method="_on_Area2_mouse_exited"]
