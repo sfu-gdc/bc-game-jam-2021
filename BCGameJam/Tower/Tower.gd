@@ -21,6 +21,7 @@ var hover_alpha = 0.75
 var time_counter : float = 100.0
 var size_counter : float = 1.0
 
+var targets = []
 var SimpleBullet = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
 
 # ratio between bullet and tower
@@ -28,12 +29,14 @@ const bullet_to_tower_ratio : float = 0.2
 
 # nodes
 onready var GameScene : Node = get_node("/root/World")
+onready var collisionRange = get_node("Sprite").get_child(2).get_child(0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("timeout", self, "fire_bullet")
 	var width : float = 2 * size_radius
 	_set_size($Sprite, width)
+	collisionRange.shape.radius = attack_range * PI * 2
 
 func _draw():
 	if draw_attack_range:
@@ -50,9 +53,12 @@ func _process(delta):
 
 
 func fire_bullet():
+	if(targets.size() <= 0): return
+	
 	# get the bullet node
 	var bullet = SimpleBullet.instance()
 	bullet.dmg = attack_dmg
+	bullet.target = targets[0]
 	
 	# set the size of bullet srpte
 	_set_bullet_size(bullet)
@@ -100,3 +106,10 @@ func _on_Area2D_mouse_exited():
 	$Sprite.modulate = Color(1, 1, 1, 1) # blue shade
 	draw_attack_range = false
 	update()
+
+func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
+	if(area.collision_layer == 2):
+		targets.append(area)
+
+func _on_Area2D_area_shape_exited(area_id, area, area_shape, local_shape):
+	targets.erase(area)
