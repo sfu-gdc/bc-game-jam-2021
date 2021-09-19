@@ -6,15 +6,16 @@ signal death
 var health = 1
 
 # Movement
-export var speed = 250
-var path_node_name = "Path"
+export var speed := 250
+export var enemy_damage := 1
+var path_node_name := "Path"
 var points_in_path = null
-var path_index = 0
+var path_index := 0
 
 # Facing direction
-var curr_direction = 1 # Facing the right
-var direction_change_count = 0
-var direction_change_threshold = 10
+var curr_direction := 1 # Facing the right
+var direction_change_count := 0
+var direction_change_threshold := 10
 
 var starting_z_index = null
 
@@ -83,7 +84,11 @@ func _on_VisibilityNotifier2D_screen_exited():
 	handle_off_screen()
 
 func handle_off_screen():
-	# TODO: Lower player health
+	# Decrease player health if the enemies get offscreen
+	GlobalVars.player_health -= enemy_damage
+	# If this causes the player to drop to 0 health, end the game
+	if GlobalVars.player_health <= 0:
+		get_tree().change_scene("res://GameOver/GameOver.tscn")
 	print("DEBUG: Enemy off screen")
 	handle_death()
 	

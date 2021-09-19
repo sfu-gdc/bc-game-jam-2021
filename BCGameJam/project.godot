@@ -51,8 +51,12 @@ _global_script_class_icons={
 [application]
 
 config/name="BCGameJam"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Start/Start.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalVars="*res://GlobalVars.gd"
 
 [global]
 
