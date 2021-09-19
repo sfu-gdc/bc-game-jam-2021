@@ -3,7 +3,7 @@ extends Area2D
 signal death
 
 # Movement
-export var speed = 500
+export var speed = 250
 var path_node_name = "Path"
 var points_in_path = null
 var path_index = 0
@@ -13,8 +13,10 @@ var curr_direction = 1 # Facing the right
 var direction_change_count = 0
 var direction_change_threshold = 10
 
+var starting_z_index = null
 func _ready():
 	get_Points_in_path()
+	starting_z_index = z_index
 
 func get_Points_in_path():
 	var path_node = get_tree().get_current_scene().get_node(path_node_name)
@@ -23,7 +25,8 @@ func get_Points_in_path():
 func _process(delta):
 	var next_point = get_next_point_in_path()
 	move_towards_point_with_delta(next_point, delta)
-	set_correct_direction(next_point);
+	set_correct_direction(next_point)
+	set_z_index(next_point)
 
 func get_next_point_in_path():
 	var next_point = points_in_path[path_index]
@@ -61,7 +64,14 @@ func set_correct_direction(next_point: Vector2):
 			curr_direction = next_direction
 			
 			direction_change_count = 0
-	
+
+func set_z_index(next_point):
+	# Reverse z index if walking upwards
+	# This will ensure an enemies foot does not cover someone's face
+	if next_point.y >= position.y:
+		z_index = starting_z_index * -1
+	else:
+		z_index = starting_z_index
 
 func _on_VisibilityNotifier2D_screen_exited():
 	handle_off_screen()
