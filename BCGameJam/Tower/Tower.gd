@@ -70,8 +70,8 @@ func fire_bullet():
 	GameScene.add_child(bullet)
 	
 	# set the bullet position to be the tower position
-	bullet.global_position.x = global_position.x
-	bullet.global_position.y = global_position.y - 63
+	bullet.global_position.x = get_node("Sprite/SpriteTop/BulletSource").global_position.x
+	bullet.global_position.y = get_node("Sprite/SpriteTop/BulletSource").global_position.y
 
 
 
