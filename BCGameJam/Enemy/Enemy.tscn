@@ -87,10 +87,12 @@ tracks/5/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 92.0715, 175.411 )
+extents = Vector2( 92.0715, 336.262 )
 
 [node name="Enemy" type="Area2D"]
 scale = Vector2( 0.15, 0.15 )
+collision_layer = 2
+collision_mask = 4
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -149,7 +151,8 @@ texture = ExtResource( 8 )
 offset = Vector2( 14.3793, 54.5545 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.87082, -141.437 )
+position = Vector2( 4.87082, -288.104 )
 shape = SubResource( 2 )
 
+[connection signal="body_shape_entered" from="." to="." method="_on_Enemy_body_shape_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
