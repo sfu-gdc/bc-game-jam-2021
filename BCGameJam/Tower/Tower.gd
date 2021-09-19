@@ -37,7 +37,7 @@ func _ready():
 
 func _draw():
 	if draw_attack_range:
-		draw_circle(position, attack_range, attack_range_color)
+		draw_circle(Vector2(0, 0), attack_range, attack_range_color)
 
 # whenever time reaches cool down, fire bullets and reset time
 func _process(delta):
@@ -93,7 +93,6 @@ func _scale_size(sprite_node: Sprite, scale: float) -> void:
 
 func _on_Area2D_mouse_entered():
 	$Sprite.modulate = Color(1, 1, 1, hover_alpha) # blue shade
-	"hello"
 	draw_attack_range = true
 	update()
 
