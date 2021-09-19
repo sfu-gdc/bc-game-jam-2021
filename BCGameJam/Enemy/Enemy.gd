@@ -2,13 +2,19 @@ extends Area2D
 
 signal death
 
+
+const HEALTH_SCALE := 0.5
+const SPEED_SCALE := 100.0
+const SIZ_SCALE := 0.75
+
+
 # Health
 export var max_health = 10
 var health = max_health
 
 # Movement
-export var speed := 250
-export var enemy_damage := 1
+export var speed := 200
+
 var path_node_name := "Path"
 var points_in_path = null
 var path_index := 0
@@ -29,6 +35,17 @@ var is_dead = false
 func _ready():
 	get_Points_in_path()
 	starting_z_index = z_index
+	
+	# Scale enemy based on world scale
+	health = ceil(HEALTH_SCALE * (GlobalVars.current_wave + 1))
+	max_health = health
+	speed = floor(SPEED_SCALE * GlobalVars.world_scale)
+	$Body.scale *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
+	var collision_shape = $CollisionShape2D
+	collision_shape.shape.extents *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
+	collision_shape.position *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
+	print(max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size))
+
 	get_node("HealthBar/ProgressBar").max_value = max_health
 	update_health_bar()
 
@@ -94,7 +111,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func handle_off_screen():
 	# Decrease player health if the enemies get offscreen
-	GlobalVars.player_health -= enemy_damage
+	GlobalVars.player_health -= health
 	# If this causes the player to drop to 0 health, end the game
 	if GlobalVars.player_health <= 0:
 		get_tree().change_scene("res://GameOver/GameOver.tscn")
@@ -116,6 +133,7 @@ func emit_blood():
 
 func handle_death():
 	is_dead = true
+	print(health)
 	emit_signal("death")
 	queue_free()	# Delete enemy
 
