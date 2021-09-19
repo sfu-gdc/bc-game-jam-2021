@@ -1,15 +1,50 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Turret/RocketTower.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Turret/RocketTowerBase.png" type="Texture" id=2]
+[ext_resource path="res://Tower/RocketTower/RocketTower.gd" type="Script" id=3]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 85.745, 286.024 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="RocketTower" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 14.7482, -195.532 )
+position = Vector2( 11.1892, -181.275 )
 texture = ExtResource( 2 )
 
 [node name="SpriteTop" type="Sprite" parent="Sprite"]
-position = Vector2( -17.8176, -326.069 )
+position = Vector2( -16.0363, -333.196 )
 texture = ExtResource( 1 )
-offset = Vector2( 26.7266, -119.38 )
+offset = Vector2( 23.1635, -122.944 )
+
+[node name="BulletSource" type="Position2D" parent="Sprite/SpriteTop"]
+position = Vector2( -89.239, -26.9997 )
+rotation = -1.55334
+scale = Vector2( 1.28213, 1.28213 )
+
+[node name="Area" type="Area2D" parent="Sprite"]
+position = Vector2( -9.56573, 92.8872 )
+scale = Vector2( 0.999998, 0.999998 )
+
+[node name="Shape" type="CollisionShape2D" parent="Sprite/Area"]
+position = Vector2( -19.779, -100.519 )
+shape = SubResource( 1 )
+
+[node name="Area2" type="Area2D" parent="Sprite"]
+position = Vector2( -9.56573, 92.8872 )
+scale = Vector2( 0.999998, 0.999998 )
+
+[node name="Shape" type="CollisionShape2D" parent="Sprite/Area2"]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Sprite/Area" to="." method="_on_Area_area_entered"]
+[connection signal="mouse_entered" from="Sprite/Area" to="." method="_on_Area_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite/Area" to="." method="_on_Area_mouse_exited"]
+[connection signal="area_shape_entered" from="Sprite/Area2" to="." method="_on_Area2_area_shape_entered"]
+[connection signal="area_shape_exited" from="Sprite/Area2" to="." method="_on_Area2_area_shape_exited"]
+[connection signal="mouse_entered" from="Sprite/Area2" to="." method="_on_Area2_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite/Area2" to="." method="_on_Area2_mouse_exited"]
