@@ -56,6 +56,7 @@ func fire_bullet():
 	# get the bullet node
 	var bullet = SimpleBullet.instance()
 	bullet.dmg = attack_dmg
+	bullet.target = target
 	
 	# set the size of bullet srpte
 	_set_bullet_size(bullet)
