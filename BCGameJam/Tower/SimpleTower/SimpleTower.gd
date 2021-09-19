@@ -13,7 +13,7 @@ func _process(delta):
 	
 	var target = targets[0]
 	if sprite_top.get_angle_to(target.position) > 0:
-		sprite_top.rotation += aim_speed * delta
+		sprite_top.rotation += aim_speed * delta * sprite_top.get_angle_to(target.position)
 	else:
 		sprite_top.rotation -= aim_speed * delta
 	if fmod(sprite_top.rotation + PI / 2, 2 * PI) < PI and fmod(sprite_top.rotation + PI / 2, 2 * PI) > 0:
