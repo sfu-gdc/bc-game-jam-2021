@@ -11,6 +11,7 @@ var velocity: Vector2 = Vector2.ZERO
 const rocket_acceleration: float = 400.0
 
 var mouse_radius: float = 10
+var sprite: Sprite
 
 func _init():
 	pass

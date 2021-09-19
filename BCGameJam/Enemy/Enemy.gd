@@ -4,7 +4,7 @@ signal death
 
 
 const HEALTH_SCALE := 0.5
-const SPEED_SCALE := 100.0
+const SPEED_SCALE := 150.0
 const SIZ_SCALE := 0.75
 
 
@@ -44,8 +44,10 @@ func _ready():
 	var collision_shape = $CollisionShape2D
 	collision_shape.shape.extents *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
 	collision_shape.position *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
-	print(max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size))
-
+	$HealthBar.position *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
+	$HealthBar.scale *= max(SIZ_SCALE + 0.25 * GlobalVars.current_wave, SIZ_SCALE * GlobalVars.wave_size)
+	
+	# Health bar stuff
 	get_node("HealthBar/ProgressBar").max_value = max_health
 	update_health_bar()
 
@@ -133,7 +135,6 @@ func emit_blood():
 
 func handle_death():
 	is_dead = true
-	print(health)
 	emit_signal("death")
 	queue_free()	# Delete enemy
 

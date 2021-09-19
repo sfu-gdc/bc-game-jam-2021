@@ -39,6 +39,7 @@ func set_status(stats):
 	attack_cool_down = stats["rocket_tower"]["cool_down"]
 	attack_dmg = stats["rocket_tower"]["dmg"]
 	cost = stats["rocket_tower"]["cost"]
+	bullet = preload("res://Bullets/Missle/Missle.tscn")
 
 func _on_Area_area_entered(area):
 	queue_free()
