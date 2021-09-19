@@ -22,7 +22,7 @@ func _ready():
 
 
 func _process(delta):
-	mouse_position = get_viewport().get_mouse_position()
+	mouse_position = get_global_mouse_position()
 	var direction = get_direction_to_enemy(mouse_position)
 	
 	fire_rocket(speed, direction, delta)

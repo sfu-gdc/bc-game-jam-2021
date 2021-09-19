@@ -21,11 +21,11 @@ func instance_simple_tower_card():
 	var tower_card = SimpleTowerCard.instance()
 	tower_card._set_card_moving_mechanmic(tower_stats["simple_tower"]["radius"])
 	tower_card.stats = tower_stats
-	add_child(tower_card)
+	get_node("../CanvasLayer").add_child(tower_card)
 	
 	# change to screen coordiantes instead of world (figure it out)
-	tower_card.global_position.x = 500
-	tower_card.global_position.y = 250
+	tower_card.global_position.x = 700
+	tower_card.global_position.y = 30
 
 # set the size of the sprite to a new width
 func _set_size(sprite_node: Sprite, new_width: float) -> void:
