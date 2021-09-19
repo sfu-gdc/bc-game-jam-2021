@@ -23,7 +23,7 @@ var time_counter : float = 0.0
 var size_counter : float = 1.0
 
 var targets = []
-var SimpleBullet = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
+var bullet
 
 # ratio between bullet and tower
 const bullet_to_tower_ratio : float = 0.2
@@ -58,22 +58,22 @@ func fire_bullet():
 	if(targets.size() <= 0): return
 	
 	# get the bullet node
-	var bullet = SimpleBullet.instance()
-	bullet.dmg = attack_dmg
-	bullet.target = targets[0]
+	var bullet_inst = bullet.instance()
+	bullet_inst.dmg = attack_dmg
+	bullet_inst.target = targets[0]
 	
 	# set the size of bullet srpte
-	_set_bullet_size(bullet)
+	_set_bullet_size(bullet_inst)
 	
 	# set the size of bullet's circular shape
-	_set_bullet_collision_area_radius(bullet)
+	_set_bullet_collision_area_radius(bullet_inst)
 	
 	# add the bullet to the tower node
-	GameScene.add_child(bullet)
+	GameScene.add_child(bullet_inst)
 	
 	# set the bullet position to be the tower position
-	bullet.global_position.x = get_node("Sprite/SpriteTop/BulletSource").global_position.x
-	bullet.global_position.y = get_node("Sprite/SpriteTop/BulletSource").global_position.y
+	bullet_inst.global_position.x = get_node("Sprite/SpriteTop/BulletSource").global_position.x
+	bullet_inst.global_position.y = get_node("Sprite/SpriteTop/BulletSource").global_position.y
 
 
 
