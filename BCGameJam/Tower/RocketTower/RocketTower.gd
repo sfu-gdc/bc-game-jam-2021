@@ -9,9 +9,6 @@ var placing_time : float = 0.0
 var is_area_entered : bool = false
 
 
-func _ready():
-	print("heloo world")
-
 func _process(delta):
 	if targets.size() <= 0: return
 	

@@ -24,7 +24,7 @@ func _process(delta):
 		sprite_top.scale.y = scale_negative_y
 		
 	if placing_time > 0.1 and not is_area_entered:
-		get_node("Sprite/Area2D2").disconnect("area_entered", self, "_on_Area_area_entered")
+		get_node("Sprite/Area").disconnect("area_entered", self, "_on_Area_area_entered")
 		is_area_entered = true
 	
 	placing_time += delta
