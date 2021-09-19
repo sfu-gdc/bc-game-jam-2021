@@ -28,12 +28,14 @@ const bullet_to_tower_ratio : float = 0.2
 
 # nodes
 onready var GameScene : Node = get_node("/root/World")
+onready var collisionRange = get_node("Sprite").get_child(2).get_child(0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("timeout", self, "fire_bullet")
 	var width : float = 2 * size_radius
 	_set_size($Sprite, width)
+	collisionRange.shape.radius = attack_range * PI * 2
 
 func _draw():
 	if draw_attack_range:
