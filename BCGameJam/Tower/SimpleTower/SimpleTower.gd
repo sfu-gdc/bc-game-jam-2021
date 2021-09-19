@@ -1,14 +1,15 @@
 extends Tower
 
-const aim_speed = deg2rad(90)
+const aim_speed = deg2rad(180)
 onready var sprite_top: Sprite = get_node("Sprite/SpriteTop")
 const scale_y : float = 1.611
 const scale_negative_y : float = -1.611
 
 
 func _process(delta):
-	var mouse_position = get_global_mouse_position()
-	if sprite_top.get_angle_to(mouse_position) > 0:
+	if target == null: return
+	
+	if sprite_top.get_angle_to(target.position) > 0:
 		sprite_top.rotation += aim_speed * delta
 	else:
 		sprite_top.rotation -= aim_speed * delta

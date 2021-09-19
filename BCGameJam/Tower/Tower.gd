@@ -21,6 +21,7 @@ var hover_alpha = 0.75
 var time_counter : float = 100.0
 var size_counter : float = 1.0
 
+var target = null
 var SimpleBullet = preload("res://Bullets/SimpleBullet/SimpleBullet.tscn")
 
 # ratio between bullet and tower
@@ -102,3 +103,10 @@ func _on_Area2D_mouse_exited():
 	$Sprite.modulate = Color(1, 1, 1, 1) # blue shade
 	draw_attack_range = false
 	update()
+
+func _on_Area2D_area_shape_entered(area_id, area, area_shape, local_shape):
+	target = area
+
+func _on_Area2D_area_shape_exited(area_id, area, area_shape, local_shape):
+	if (target == area):
+		target = null
