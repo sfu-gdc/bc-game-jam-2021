@@ -88,7 +88,8 @@ tracks/5/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 92.0715, 175.411 )
+resource_local_to_scene = true
+extents = Vector2( 225.83, 426.172 )
 
 [node name="Enemy" type="Area2D"]
 position = Vector2( 0, -0.712769 )
@@ -96,9 +97,6 @@ scale = Vector2( 0.15, 0.15 )
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 38.014, -407.463 )
@@ -154,7 +152,7 @@ texture = ExtResource( 8 )
 offset = Vector2( 14.3793, 54.5545 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.87082, -288.104 )
+position = Vector2( -17.0167, -372.653 )
 shape = SubResource( 2 )
 
 [node name="HitTimer" type="Timer" parent="."]
