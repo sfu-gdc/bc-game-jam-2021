@@ -38,6 +38,7 @@ func _ready():
 	var width : float = 2 * size_radius
 	_set_size($Sprite, width)
 	collisionRange.shape.set_radius(attack_range)
+	get_node("AudioStreamPlayer").play()
 	
 	
 func _draw():
