@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Tower/SimpleTower/SimpleTower.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Turret/Turret.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Turret/TurretBase.png" type="Texture" id=3]
 [ext_resource path="res://Sound/tower.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sound/gun.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 85.745, 286.024 )
@@ -43,6 +44,9 @@ collision_mask = 2
 [node name="Shape" type="CollisionShape2D" parent="Area"]
 visible = false
 shape = SubResource( 2 )
+
+[node name="GunAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

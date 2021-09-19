@@ -31,6 +31,7 @@ const bullet_to_tower_ratio : float = 0.2
 # nodes
 onready var GameScene : Node = get_node("/root/World")
 onready var collisionRange = get_node("Area/Shape")
+onready var gunAudioPlayer = get_node("GunAudio")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,6 +76,7 @@ func fire_bullet():
 	# set the bullet position to be the tower position
 	bullet_inst.global_position.x = get_node("Sprite/SpriteTop/BulletSource").global_position.x
 	bullet_inst.global_position.y = get_node("Sprite/SpriteTop/BulletSource").global_position.y
+	gunAudioPlayer.play()
 
 
 
