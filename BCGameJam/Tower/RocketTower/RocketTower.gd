@@ -9,7 +9,13 @@ var placing_time : float = 0.0
 var is_area_entered : bool = false
 
 
+func _ready():
+	print("heloo world")
+
 func _process(delta):
+	if targets.size() <= 0: return
+	
+	var target = targets[0]
 	var mouse_position = get_global_mouse_position()
 	if sprite_top.get_angle_to(mouse_position) > 0:
 		sprite_top.rotation += aim_speed * delta
@@ -37,6 +43,5 @@ func set_status(stats):
 	attack_dmg = stats["rocket_tower"]["dmg"]
 	cost = stats["rocket_tower"]["cost"]
 
-
-
-
+func _on_Area_area_entered(area):
+	queue_free()

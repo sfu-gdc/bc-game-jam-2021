@@ -36,7 +36,7 @@ collision_mask = 8
 shape = SubResource( 1 )
 
 [node name="Area" type="Area2D" parent="."]
-collision_mask = 3
+collision_mask = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Area"]
 shape = SubResource( 2 )
