@@ -17,6 +17,8 @@ var tower_stats = {
 }
 
 var SimpleTowerCard : PackedScene = preload("res://Card/SimpleTowerCard/SimpleTowerCard.tscn")
+var RocketTowerCard : PackedScene = preload("res://Card/RocketTowerCard/RocketTowerCard.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,6 +34,15 @@ func instance_simple_tower_card():
 	# change to screen coordiantes instead of world (figure it out)
 	tower_card.global_position.x = 700
 	tower_card.global_position.y = 30
+	
+	var rocket_tower_card = RocketTowerCard.instance()
+	rocket_tower_card._set_card_moving_mechanmic(tower_stats["rocket_tower"]["radius"])
+	rocket_tower_card.stats = tower_stats
+	get_node("../CanvasLayer").add_child(rocket_tower_card)
+	
+	rocket_tower_card.global_position.x = 750
+	rocket_tower_card.global_position.y = 30
+	
 
 # set the size of the sprite to a new width
 func _set_size(sprite_node: Sprite, new_width: float) -> void:

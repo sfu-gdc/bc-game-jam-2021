@@ -73,8 +73,10 @@ click={
 
 [layer_names]
 
+2d_physics/layer_1="tower_detection_range"
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Bullet"
+2d_physics/layer_4="tower_placement"
 
 [rendering]
 

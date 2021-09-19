@@ -3,7 +3,8 @@ extends Area2D
 signal death
 
 # Health
-var health = 1
+export var max_health = 10
+var health = max_health
 
 # Movement
 export var speed := 250
@@ -19,10 +20,17 @@ var direction_change_threshold := 10
 
 var starting_z_index = null
 var blood_particles = preload("res://Particles/Blood.tscn")
+
+func update_health_bar():
+	get_node("HealthBar/ProgressBar").value = health
+	get_node("HealthBar/Label").text = str(health)
+
 var is_dead = false
 func _ready():
 	get_Points_in_path()
 	starting_z_index = z_index
+	get_node("HealthBar/ProgressBar").max_value = max_health
+	update_health_bar()
 
 func get_Points_in_path():
 	var path_node = get_tree().get_current_scene().get_node(path_node_name)
@@ -67,6 +75,7 @@ func set_correct_direction(next_point: Vector2):
 		if direction_change_count >= direction_change_threshold:
 			# Flip horizontal
 			scale.x *= -1
+			get_node("HealthBar").scale.x *= -1 # the health bar should remain facing the right way
 			curr_direction = next_direction
 			
 			direction_change_count = 0
@@ -94,6 +103,7 @@ func handle_off_screen():
 	
 func handle_hit(body):
 	health -= 1
+	update_health_bar()
 	if health < 1:
 		handle_death()
 		emit_blood()

@@ -13,7 +13,7 @@ func _process(delta):
 	
 	var target = targets[0]
 	if sprite_top.get_angle_to(target.position) > 0:
-		sprite_top.rotation += aim_speed * delta
+		sprite_top.rotation += aim_speed * delta * sprite_top.get_angle_to(target.position)
 	else:
 		sprite_top.rotation -= aim_speed * delta
 	if fmod(sprite_top.rotation + PI / 2, 2 * PI) < PI and fmod(sprite_top.rotation + PI / 2, 2 * PI) > 0:
@@ -22,6 +22,10 @@ func _process(delta):
 		sprite_top.scale.y = scale_y
 	else:
 		sprite_top.scale.y = scale_negative_y
+		
+	if placing_time > 0.1 and not is_area_entered:
+		get_node("Sprite/Area2D2").disconnect("area_entered", self, "_on_Area_area_entered")
+		is_area_entered = true
 	
 	placing_time += delta
 
@@ -31,3 +35,7 @@ func set_status(stats):
 	attack_range = stats["simple_tower"]["range"]
 	attack_cool_down = stats["simple_tower"]["cool_down"]
 	attack_dmg = stats["simple_tower"]["dmg"]
+
+
+func _on_Area_area_entered(area):
+	queue_free()
