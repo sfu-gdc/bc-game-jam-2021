@@ -26,5 +26,5 @@ You can run the game on Godot through this repo or download the executable direc
 </p>
 
 <p align="center">
-  <img src="./footer.png" alt="Legacy Edition" height="200" />
+  <img src="https://raw.githubusercontent.com/sfu-gdc/bc-game-jam-2021/main/footer.PNG" alt="Legacy Edition" height="200" />
 </p>
